@@ -51,18 +51,15 @@
   };
 </script>
 
-  <meta name="description" content="Python GIL的全称是Global Interpreter Lock，顾名思义，它是一个全局的mutex，用来保证Python中的线程安全。 既然锁是全局的，那Python是如何实现多线程的呢？很可惜，Python只支持单线程。 GIL设计初衷Python面世时，thread这个概念还未被提出，所以Python最初的设计中并没有考虑到多线程。 在之后，越来越多的C程序被port到Python">
-<meta name="keywords" content="Python">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Python GIL">
-<meta property="og:url" content="http:&#x2F;&#x2F;shengpei.me&#x2F;2017&#x2F;05&#x2F;31&#x2F;Python%20GIL&#x2F;index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="tags">
+<meta property="og:url" content="http:&#x2F;&#x2F;shengpei.me&#x2F;tags&#x2F;index.html">
 <meta property="og:site_name" content="寒江独钓">
-<meta property="og:description" content="Python GIL的全称是Global Interpreter Lock，顾名思义，它是一个全局的mutex，用来保证Python中的线程安全。 既然锁是全局的，那Python是如何实现多线程的呢？很可惜，Python只支持单线程。 GIL设计初衷Python面世时，thread这个概念还未被提出，所以Python最初的设计中并没有考虑到多线程。 在之后，越来越多的C程序被port到Python">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-17T02:16:00.000Z">
+<meta property="og:updated_time" content="2019-11-10T07:25:45.750Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://shengpei.me/2017/05/31/Python%20GIL/">
+<link rel="canonical" href="http://shengpei.me/tags/">
 
 
 <script id="page-configurations">
@@ -70,13 +67,14 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: true,
-    isPage: false,
+    isPost: false,
+    isPage: true,
     isArchive: false
   };
 </script>
 
-  <title>Python GIL | 寒江独钓</title>
+  <title>tags | 寒江独钓
+  </title>
   
 
 
@@ -177,126 +175,52 @@
       <div class="main-inner">
         <div class="content-wrap">
           
+  
+  
 
           <div class="content">
             
 
   <div class="posts-expand">
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shengpei.me/2017/05/31/Python%20GIL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Shengpei">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="寒江独钓">
-    </span>
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          Python GIL
-        </h1>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
+<h1 class="post-title" itemprop="name headline">tags
+</h1>
 
-              <time title="创建时间：2017-05-31 19:13:21" itemprop="dateCreated datePublished" datetime="2017-05-31T19:13:21-07:00">2017-05-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2018-06-16 19:16:00" itemprop="dateModified" datetime="2018-06-16T19:16:00-07:00">2018-06-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-            </span>
+<div class="post-meta">
+  
 
-          
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
+</div>
 
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+</header>
 
       
-        <p>Python GIL的全称是Global Interpreter Lock，顾名思义，它是一个全局的mutex，用来保证Python中的线程安全。</p>
-<p>既然锁是全局的，那Python是如何实现多线程的呢？很可惜，<strong>Python只支持单线程</strong>。</p>
-<h3 id="GIL设计初衷"><a href="#GIL设计初衷" class="headerlink" title="GIL设计初衷"></a>GIL设计初衷</h3><p>Python面世时，thread这个概念还未被提出，所以Python最初的设计中并没有考虑到多线程。</p>
-<p>在之后，越来越多的C程序被port到Python里，因为C并不是thread safe的，所以Python加了GIL以确保程序里不会有race condition。</p>
-<p>GIL确保了Python的易用性，虽然现在GIL经常被诟病，但GIL无疑是Python能够成功的原因之一。</p>
-<h3 id="为什么GIL一直被保留"><a href="#为什么GIL一直被保留" class="headerlink" title="为什么GIL一直被保留"></a>为什么GIL一直被保留</h3><p>虽然GIL使得Python只能以单线程运行，但它一直被保留了下来。甚至Python3都还在用着GIL，主要原因有两个：</p>
-<ol>
-<li>GIL保证了Python的thread safe。如果在移除GIL的同时要保证thread safe，需要大量的修改，会使得易用性大打折扣</li>
-<li>GIL提高了单线程的性能。因为Python只用一个锁，在单线程的情况下，和其他语言编写的程序相比，节省了acquire/release lock的时间，提高了性能。</li>
-</ol>
-<p>虽然目前Python还在用着GIL，开发者依旧在积极地移除GIL，毕竟多线程是趋势。</p>
-<h3 id="并行"><a href="#并行" class="headerlink" title="并行"></a>并行</h3><p>虽然Python只支持单线程，但如果实在需要并行处理，也是有办法的：</p>
-<ol>
-<li>使用multi-process而不是multi-thread。</li>
-<li>使用别的interpreter，如Jython和IronPython。GIL只适用于CPython。</li>
-</ol>
-
-    </div>
-
-    
-    
-    
-
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/Python/" rel="tag"># Python</a>
+      
+      
+      <div class="post-body">
+          <div class="tag-cloud">
+            <div class="tag-cloud-title">
+              目前共计 1 个标签
+            </div>
+            <div class="tag-cloud-tags">
+              <a href="/tags/Python/" style="font-size: 12px; color: #ccc">Python</a>
+            </div>
           </div>
-
         
-
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-            </div>
-
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-                <a href="/2019/09/13/Python3%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%9A%8F%E6%9C%BA%E5%93%88%E5%B8%8C/" rel="prev" title="Python3字符串随机哈希">
-                  Python3字符串随机哈希 <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
-      </footer>
+      </div>
+      
+      
+      
+    </div>
     
-  </article>
-  
-  
-  
 
+    
+    
+    
   </div>
 
 
@@ -333,7 +257,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#GIL设计初衷"><span class="nav-number">1.</span> <span class="nav-text">GIL设计初衷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么GIL一直被保留"><span class="nav-number">2.</span> <span class="nav-text">为什么GIL一直被保留</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并行"><span class="nav-number">3.</span> <span class="nav-text">并行</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -477,9 +400,9 @@
       DISQUS.reset({
         reload: true,
         config: {page: {
-            url: "http://shengpei.me/2017/05/31/Python%20GIL/",
-            identifier: "2017/05/31/Python GIL/",
-            title: "Python GIL"
+            url: "http://shengpei.me/tags/index.html",
+            identifier: "tags/index.html",
+            title: "tags"
           }
         }
       });
