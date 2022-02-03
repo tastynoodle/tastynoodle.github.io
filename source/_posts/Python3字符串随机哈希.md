@@ -13,7 +13,7 @@ tags: Python
 
 #### Root Cause
 
-出于某些原因，我们在配置jvm的时候，是先把所有的property和value写在一个Python的dictonary里，然后再写回到一个config file。
+出于某些原因，我们在配置jvm的时候，是先把所有的property和value写在一个Python的dict里，然后再写回到一个config file。
 
 每当我们需要加一个新的property，就会做
 
