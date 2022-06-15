@@ -1,7 +1,1220 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>画船听雨眠 | Shengpei's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 4.0.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">画船听雨眠</h1><a id="logo" href="/.">画船听雨眠</a><p class="description">Shengpei's Blog</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"><a href="/2022/04/03/LCA/">Leetcode笔记之Lowest Common Ancestor</a></h1><div class="post-meta">2022-04-03</div><div class="post-content"><p>Leetcode上共有5道关于LCA的题目:</p>
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="画船听雨眠">
+<meta property="og:url" content="http:&#x2F;&#x2F;shengpei.blog&#x2F;index.html">
+<meta property="og:site_name" content="画船听雨眠">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://shengpei.blog/"/>
+
+
+
+
+
+  <title>画船听雨眠</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">画船听雨眠</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Shengpei's Blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://shengpei.blog/2022/04/03/LCA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shengpei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="画船听雨眠">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2022/04/03/LCA/" itemprop="url">Leetcode笔记之Lowest Common Ancestor</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-04-03T20:19:58-07:00">
+                2022-04-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Leetcode上共有5道关于LCA的题目:</p>
 <ul>
-<li><a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/" target="_blank" rel="noopener">235. Lowest Common Ancestor of a Binary Search Tree</a></li></div><p class="readmore"><a href="/2022/04/03/LCA/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2021/01/11/%E7%AE%80%E7%9F%AD%E7%9A%84TorchScript%E6%95%99%E7%A8%8B/">简短的TorchScript教程</a></h1><div class="post-meta">2021-01-11</div><div class="post-content"><p>花了点时间读了PyTorch中的Torch Script的<a href="https://pytorch.org/tutorials/beginner/Intro_to_TorchScript_tutorial.html" target="_blank" rel="noopener">官方教程</a>，希望能以简短的语言概括一下。</p></div><p class="readmore"><a href="/2021/01/11/%E7%AE%80%E7%9F%AD%E7%9A%84TorchScript%E6%95%99%E7%A8%8B/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2020/01/14/%E5%81%9A%E4%B8%80%E4%B8%AA%E4%B9%90%E8%A7%82%E7%9A%84engineer/">做一个乐观的engineer</a></h1><div class="post-meta">2020-01-14</div><div class="post-content"><p>或许是因为小时候下棋太多的缘故，每当我思考一件事情时，脑子中总会去计算各种可能性。比如说出去旅游，我老婆可能会说带张信用卡就行了，但我会去想那里的收费站会不会cash only，收费站边上有没有ATM，停车位会不会需要投币……</p>
-<p>刚步入职场后，因为被各种组坑，导致自己的疑心加重了。每当做一个project时，我总会忍不住去想，这个project有哪些哪些潜在的风险，万一解决不了怎么办。整个人经常顾虑重重。</p></div><p class="readmore"><a href="/2020/01/14/%E5%81%9A%E4%B8%80%E4%B8%AA%E4%B9%90%E8%A7%82%E7%9A%84engineer/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2019/09/13/Python3%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%9A%8F%E6%9C%BA%E5%93%88%E5%B8%8C/">Python3字符串随机哈希</a></h1><div class="post-meta">2019-09-13</div><div class="post-content"><p>最近遇到了一个由于字符串随机哈希引起的问题，在此记录一下。</p>
-<h4 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h4><p>我们有个基于java的service，在进行了一次新的deployment后，有一部分的container挂了。从error msg来看，似乎是有些jvm property的property和value位置互换了。</p></div><p class="readmore"><a href="/2019/09/13/Python3%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%9A%8F%E6%9C%BA%E5%93%88%E5%B8%8C/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/05/31/Python%20GIL/">Python GIL</a></h1><div class="post-meta">2017-05-31</div><div class="post-content"><p>Python GIL的全称是Global Interpreter Lock，顾名思义，它是一个全局的mutex，用来保证Python中的线程安全。</p>
+<li><a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/" target="_blank" rel="noopener">235. Lowest Common Ancestor of a Binary Search Tree</a></li>
+<li><a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/" target="_blank" rel="noopener">236. Lowest Common Ancestor of a Binary Tree</a></li>
+<li><a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-ii/" target="_blank" rel="noopener">1644. Lowest Common Ancestor of a Binary Tree II</a></li>
+<li><a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-iii/" target="_blank" rel="noopener">1650. Lowest Common Ancestor of a Binary Tree III</a></li>
+<li><a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-iv/" target="_blank" rel="noopener">1676. Lowest Common Ancestor of a Binary Tree IV</a></li>
+</ul>
+<p>其中1650更像是链表题，本质上就是给了两个链表头，求这两个链表的交叉点，和LCA其实并没有太大关系。</p>
+<p>剩下的4道题，思路都是一致的：</p>
+<ul>
+<li>后续遍历树，若某一子树包含所给的tree node，则返回子树的根节点，反之返回NULL</li>
+<li>若某个节点的左右子树各包含一个或多个所需的tree node，那么该节点为LCA</li>
+<li>若所给的tree node不一定存在，那么需要用全局变量来记录是否在树的遍历中有见过该tree node</li>
+<li>在binary search tree的情况下，可以进行优化</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://shengpei.blog/2021/01/11/%E7%AE%80%E7%9F%AD%E7%9A%84TorchScript%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shengpei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="画船听雨眠">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/01/11/%E7%AE%80%E7%9F%AD%E7%9A%84TorchScript%E6%95%99%E7%A8%8B/" itemprop="url">简短的TorchScript教程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-11T22:56:44-08:00">
+                2021-01-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>花了点时间读了PyTorch中的Torch Script的<a href="https://pytorch.org/tutorials/beginner/Intro_to_TorchScript_tutorial.html" target="_blank" rel="noopener">官方教程</a>，希望能以简短的语言概括一下。</p>
+<h3 id="什么是TorchScript"><a href="#什么是TorchScript" class="headerlink" title="什么是TorchScript"></a>什么是TorchScript</h3><p>简单地讲，TorchScript就是PyTorch模型的一种中间表示。我们可以将一个PyTorch模型转化成TorchScript并导出，然后运行在别的环境中（例如C++）。</p>
+<p>在此，我想提一下ML framework常见的两种运行模式：</p>
+<ul>
+<li>Eager mode。一个例子是在Python console的代码会立即被执行，也就是写一行跑一行。PyTorch属于eager mode。</li>
+<li>Graph mode。类似于C++程序，代码写完后会被编译成可执行文件，然后一次性从头跑到尾。Caffe2和TensorFlow属于Graph mode。</li>
+</ul>
+<p>Eager mode的好处主要在于方便调试（加断点），开发效率高。</p>
+<p>而在graph mode下，当我们有了整个graph后，跨平台就变得很容易，而且也更容易对整体做优化。我们甚至可以开发一些算法，将一个graph拆分成多块，然后分布到多个机器上进行计算。TorchScript就是PyTorch的graph mode的实现。</p>
+<h3 id="TorchScript的生成方法"><a href="#TorchScript的生成方法" class="headerlink" title="TorchScript的生成方法"></a>TorchScript的生成方法</h3><p>PyTorch提供了两种方法生成TorchScript:</p>
+<h4 id="Scripting-torch-jit-script"><a href="#Scripting-torch-jit-script" class="headerlink" title="Scripting (torch.jit.script)"></a>Scripting (<code>torch.jit.script</code>)</h4><p>这也是比较推荐的一种方法。使用方法很简单 - 输入PyTorch模型，Scripting模块会生成对应的TorchScript。</p>
+<h4 id="Tracing-torch-jit-tracing"><a href="#Tracing-torch-jit-tracing" class="headerlink" title="Tracing (torch.jit.tracing)"></a>Tracing (<code>torch.jit.tracing</code>)</h4><p>和Scripting不同的是，Tracing除了需要PyTorch模型外，还需要一组sample input。Tracing模块会用sample input跑一遍模型，然后记录下所有的相关操作，并省略掉所有未执行的代码。比如说if-else语句，因为一组sample input只可能触发if和else中的一个，Tracing不会讲未执行的那部分代码编译到最后生成的TorchScript里。所以Tracing适用于不怎么有control flow的模型，或者说是对于性能要求比较苛刻的场景。</p>
+<h4 id="混合模式"><a href="#混合模式" class="headerlink" title="混合模式"></a>混合模式</h4><p>除了使用Scripting或者Tracing外，我们还可以讲两种模式混合使用。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://shengpei.blog/2020/01/14/%E5%81%9A%E4%B8%80%E4%B8%AA%E4%B9%90%E8%A7%82%E7%9A%84engineer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shengpei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="画船听雨眠">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/14/%E5%81%9A%E4%B8%80%E4%B8%AA%E4%B9%90%E8%A7%82%E7%9A%84engineer/" itemprop="url">做一个乐观的engineer</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-14T17:29:21-08:00">
+                2020-01-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>或许是因为小时候下棋太多的缘故，每当我思考一件事情时，脑子中总会去计算各种可能性。比如说出去旅游，我老婆可能会说带张信用卡就行了，但我会去想那里的收费站会不会cash only，收费站边上有没有ATM，停车位会不会需要投币……</p>
+<p>刚步入职场后，因为被各种组坑，导致自己的疑心加重了。每当做一个project时，我总会忍不住去想，这个project有哪些哪些潜在的风险，万一解决不了怎么办。整个人经常顾虑重重。</p>
+<p>最近和一些senior engineer一起做一些大项目，有点被他们的人格魅力感染了。这些项目的很多细节都极其复杂，edge case巨多，但大家都是很乐观且坚定地相信这些项目一定能做下来。</p>
+<p>这里也不是要鸡汤……因为在很多公司，确实坑很多。但随着经验的积累，我愈发觉得，技术人员的本性应该是乐观的。</p>
+<p>从公司的角度出发，公司雇用一个工程师，更多的是需要他去解决问题而不是提出问题。项目复杂通常也意味着技术难度大，对于工程师来说应该是件开心的事才对。</p>
+<p>从做人的角度出发，人的心胸得宽广。只有dream big，才能够achieve more。逢山开路，遇水搭桥，这才应该是人生的常态。</p>
+<p>当然，要有一个从容的心态，最重要的还是得有实力。我要好好努力，希望有一天我也能准备地避掉各种坑爹的项目，对那些不坑爹的，无论风险多大，都能保持积极乐观。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://shengpei.blog/2019/09/13/Python3%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%9A%8F%E6%9C%BA%E5%93%88%E5%B8%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shengpei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="画船听雨眠">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/13/Python3%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%9A%8F%E6%9C%BA%E5%93%88%E5%B8%8C/" itemprop="url">Python3字符串随机哈希</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-13T12:20:33-07:00">
+                2019-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近遇到了一个由于字符串随机哈希引起的问题，在此记录一下。</p>
+<h4 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h4><p>我们有个基于java的service，在进行了一次新的deployment后，有一部分的container挂了。从error msg来看，似乎是有些jvm property的property和value位置互换了。</p>
+<h4 id="Root-Cause"><a href="#Root-Cause" class="headerlink" title="Root Cause"></a>Root Cause</h4><p>出于某些原因，我们在配置jvm的时候，是先把所有的property和value写在一个Python的dict里，然后再写回到一个config file。</p>
+<p>每当我们需要加一个新的property，就会做</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dict.update([(property, value)])</span><br></pre></td></tr></table></figure>
+
+<p>但是在一个新加的property里，由于人为的因素，有个括号被误写成了花括号，原来的tuple就变成了set</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dict.update([&#123;property, value&#125;])</span><br></pre></td></tr></table></figure>
+
+<p>这种情况下，Python会把set返回的第一个值当成property，第二个值当成value。由于Python中set的返回顺序不固定，就造成了在一部分的container中，dict被解析成了正确的config，而在另一部分container中，dict被解析成了错误的config。</p>
+<p>Fix就很简单了，把花括号改成普通括号就行了。</p>
+<h4 id="为什么set返回顺序不固定"><a href="#为什么set返回顺序不固定" class="headerlink" title="为什么set返回顺序不固定"></a>为什么set返回顺序不固定</h4><p>set简单地讲就是一个hash table，当有一个新的element被加进来时，Python直接call这个element的<code>__hash__()</code>来取哈希值，然后加入hash table里。</p>
+<p>在Python3里，string object的哈希返回值是不固定的。</p>
+<h4 id="为什么string-object的哈希值不固定"><a href="#为什么string-object的哈希值不固定" class="headerlink" title="为什么string object的哈希值不固定"></a>为什么string object的哈希值不固定</h4><p>Python的随机哈希，简单地说就是对普通哈希进行了加盐。原因主要是为了防止Dos攻击。试想如果hash算法是公开的，那么我们可以精心设计一些值，使得他们拥有相同的哈希值。这样的话，在执行Python程序时，set的操作效率就会变成O(n^2)。这对于web application来说无疑是致命的。</p>
+<h4 id="关闭随机哈希"><a href="#关闭随机哈希" class="headerlink" title="关闭随机哈希"></a>关闭随机哈希</h4><p>Python在每次启动解释器时，都会设置一个random seed。所以在同一个解释器进程里，相同字符串的哈希值总是固定的。但每当另起一个解释器时，seed就会被重置，字符串的哈希值也会随之改变。</p>
+<p>想要关闭随机哈希，只要把<code>PYTHONHASHSEED</code>这个环境变量设置成<code>0</code>就可以了（默认是<code>random</code>）。其实在Python2.x版本里，这个环境变量的默认值就是<code>0</code>。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://shengpei.blog/2017/05/31/Python%20GIL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shengpei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="画船听雨眠">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/31/Python%20GIL/" itemprop="url">Python GIL</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-31T19:13:21-07:00">
+                2017-05-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Python GIL的全称是Global Interpreter Lock，顾名思义，它是一个全局的mutex，用来保证Python中的线程安全。</p>
 <p>既然锁是全局的，那Python是如何实现多线程的呢？很可惜，<strong>Python只支持单线程</strong>。</p>
-<h3 id="GIL设计初衷"><a href="#GIL设计初衷" class="headerlink" title="GIL设计初衷"></a>GIL设计初衷</h3><p>Python面世时，thread这个概念还未被提出，所以Python最初的设计中并没有考虑到多线程。</p></div><p class="readmore"><a href="/2017/05/31/Python%20GIL/">阅读全文</a></p></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://shengpei.blog"/></form></div><div class="widget"><form class="search-form" action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="http://shengpei.blog"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Leetcode/" style="font-size: 15px;">Leetcode</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/" style="font-size: 15px;">人生感悟</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 15px;">随笔</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2022/04/03/LCA/">Leetcode笔记之Lowest Common Ancestor</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/01/11/%E7%AE%80%E7%9F%AD%E7%9A%84TorchScript%E6%95%99%E7%A8%8B/">简短的TorchScript教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/14/%E5%81%9A%E4%B8%80%E4%B8%AA%E4%B9%90%E8%A7%82%E7%9A%84engineer/">做一个乐观的engineer</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/13/Python3%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%9A%8F%E6%9C%BA%E5%93%88%E5%B8%8C/">Python3字符串随机哈希</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/Python%20GIL/">Python GIL</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2022 <a href="/." rel="nofollow">画船听雨眠.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+<h3 id="GIL设计初衷"><a href="#GIL设计初衷" class="headerlink" title="GIL设计初衷"></a>GIL设计初衷</h3><p>Python面世时，thread这个概念还未被提出，所以Python最初的设计中并没有考虑到多线程。</p>
+<p>在之后，越来越多的C程序被port到Python里，因为C并不是thread safe的，所以Python加了GIL以确保程序里不会有race condition。</p>
+<p>GIL确保了Python的易用性，虽然现在GIL经常被诟病，但GIL无疑是Python能够成功的原因之一。</p>
+<h3 id="为什么GIL一直被保留"><a href="#为什么GIL一直被保留" class="headerlink" title="为什么GIL一直被保留"></a>为什么GIL一直被保留</h3><p>虽然GIL使得Python只能以单线程运行，但它一直被保留了下来。甚至Python3都还在用着GIL，主要原因有两个：</p>
+<ol>
+<li>GIL保证了Python的thread safe。如果在移除GIL的同时要保证thread safe，需要大量的修改，会使得易用性大打折扣</li>
+<li>GIL提高了单线程的性能。因为Python只用一个锁，在单线程的情况下，和其他语言编写的程序相比，节省了acquire/release lock的时间，提高了性能。</li>
+</ol>
+<p>虽然目前Python还在用着GIL，开发者依旧在积极地移除GIL，毕竟多线程是趋势。</p>
+<h3 id="并行"><a href="#并行" class="headerlink" title="并行"></a>并行</h3><p>虽然Python只支持单线程，但如果实在需要并行处理，也是有办法的：</p>
+<ol>
+<li>使用multi-process而不是multi-thread。</li>
+<li>使用别的interpreter，如Jython和IronPython。GIL只适用于CPython。</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Shengpei" />
+          <p class="site-author-name" itemprop="name">Shengpei</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shengpei</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
