@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Python," />
+  <meta name="keywords" content="Ray," />
 
 
 
@@ -94,15 +94,15 @@
 
 
 
-<meta name="description" content="最近遇到了一个由于字符串随机哈希引起的问题，在此记录一下。 起因我们有个基于java的service，在进行了一次新的deployment后，有一部分的container挂了。从error msg来看，似乎是有些jvm property的property和value位置互换了。 Root Cause出于某些原因，我们在配置jvm的时候，是先把所有的property和value写在一个Python的">
-<meta name="keywords" content="Python">
+<meta name="description" content="Well, I decided to spend some time learning Ray. Why do I do this? Mainly two reasons:  I would like to get some understanding regarding how distributed computing framework works I would like to learn">
+<meta name="keywords" content="Ray">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python3字符串随机哈希">
-<meta property="og:url" content="http:&#x2F;&#x2F;shengpei.blog&#x2F;2019&#x2F;09&#x2F;13&#x2F;Python3%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%9A%8F%E6%9C%BA%E5%93%88%E5%B8%8C&#x2F;index.html">
+<meta property="og:title" content="Learning Ray(1)">
+<meta property="og:url" content="http:&#x2F;&#x2F;shengpei.blog&#x2F;2022&#x2F;09&#x2F;16&#x2F;Learning-Ray-1&#x2F;index.html">
 <meta property="og:site_name" content="画船听雨眠">
-<meta property="og:description" content="最近遇到了一个由于字符串随机哈希引起的问题，在此记录一下。 起因我们有个基于java的service，在进行了一次新的deployment后，有一部分的container挂了。从error msg来看，似乎是有些jvm property的property和value位置互换了。 Root Cause出于某些原因，我们在配置jvm的时候，是先把所有的property和value写在一个Python的">
+<meta property="og:description" content="Well, I decided to spend some time learning Ray. Why do I do this? Mainly two reasons:  I would like to get some understanding regarding how distributed computing framework works I would like to learn">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2022-01-23T06:25:30.000Z">
+<meta property="og:updated_time" content="2022-09-17T05:17:01.084Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://shengpei.blog/2019/09/13/Python3字符串随机哈希/"/>
+  <link rel="canonical" href="http://shengpei.blog/2022/09/16/Learning-Ray-1/"/>
 
 
 
 
 
-  <title>Python3字符串随机哈希 | 画船听雨眠</title>
+  <title>Learning Ray(1) | 画船听雨眠</title>
   
 
 
@@ -261,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://shengpei.blog/2019/09/13/Python3%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%9A%8F%E6%9C%BA%E5%93%88%E5%B8%8C/">
+    <link itemprop="mainEntityOfPage" href="http://shengpei.blog/2022/09/16/Learning-Ray-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shengpei">
@@ -278,7 +278,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Python3字符串随机哈希</h1>
+          <h1 class="post-title" itemprop="name headline">Learning Ray(1)</h1>
         
 
         <div class="post-meta">
@@ -290,8 +290,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-13T12:20:33-07:00">
-                2019-09-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-09-16T21:42:57-07:00">
+                2022-09-16
               </time>
             
 
@@ -313,8 +313,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
+                  <a href="/categories/Ray/" itemprop="url" rel="index">
+                    <span itemprop="name">Ray</span>
                   </a>
                 </span>
 
@@ -331,9 +331,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/13/Python3%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%9A%8F%E6%9C%BA%E5%93%88%E5%B8%8C/#comments" itemprop="discussionUrl">
+                <a href="/2022/09/16/Learning-Ray-1/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/09/13/Python3字符串随机哈希/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2022/09/16/Learning-Ray-1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -361,22 +361,23 @@
       
 
       
-        <p>最近遇到了一个由于字符串随机哈希引起的问题，在此记录一下。</p>
-<h4 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h4><p>我们有个基于java的service，在进行了一次新的deployment后，有一部分的container挂了。从error msg来看，似乎是有些jvm property的property和value位置互换了。</p>
-<h4 id="Root-Cause"><a href="#Root-Cause" class="headerlink" title="Root Cause"></a>Root Cause</h4><p>出于某些原因，我们在配置jvm的时候，是先把所有的property和value写在一个Python的dict里，然后再写回到一个config file。</p>
-<p>每当我们需要加一个新的property，就会做</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dict.update([(property, value)])</span><br></pre></td></tr></table></figure>
+        <p>Well, I decided to spend some time learning <a href="https://docs.ray.io/en/latest/" target="_blank" rel="noopener">Ray</a>. Why do I do this? Mainly two reasons:</p>
+<ul>
+<li>I would like to get some understanding regarding how distributed computing framework works</li>
+<li>I would like to learn to read source code of an open-source project (I know it is kinda embarrassing that I haven’t studied any open source project after being a software engineer for 6 years)</li>
+</ul>
+<h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><p>The <a href="https://docs.ray.io/en/latest/ray-core/walkthrough.html" target="_blank" rel="noopener">ray website</a> has the first tiny example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import ray</span><br><span class="line"></span><br><span class="line">ray.init()</span><br><span class="line"></span><br><span class="line"># Define the square task.</span><br><span class="line">@ray.remote</span><br><span class="line">def square(x):</span><br><span class="line">    return x * x</span><br><span class="line"></span><br><span class="line"># Launch four parallel square tasks.</span><br><span class="line">futures = [square.remote(i) for i in range(4)]</span><br><span class="line"></span><br><span class="line"># Retrieve results.</span><br><span class="line">print(ray.get(futures))</span><br></pre></td></tr></table></figure>
 
-<p>但是在一个新加的property里，由于人为的因素，有个括号被误写成了花括号，原来的tuple就变成了set</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dict.update([&#123;property, value&#125;])</span><br></pre></td></tr></table></figure>
+<p>Running this code snippet will give the following result</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[0, 1, 4, 9]</span><br></pre></td></tr></table></figure>
 
-<p>这种情况下，Python会把set返回的第一个值当成property，第二个值当成value。由于Python中set的返回顺序不固定，就造成了在一部分的container中，dict被解析成了正确的config，而在另一部分container中，dict被解析成了错误的config。</p>
-<p>Fix就很简单了，把花括号改成普通括号就行了。</p>
-<h4 id="为什么set返回顺序不固定"><a href="#为什么set返回顺序不固定" class="headerlink" title="为什么set返回顺序不固定"></a>为什么set返回顺序不固定</h4><p>set简单地讲就是一个hash table，当有一个新的element被加进来时，Python直接call这个element的<code>__hash__()</code>来取哈希值，然后加入hash table里。</p>
-<p>在Python3里，string object的哈希返回值是不固定的。</p>
-<h4 id="为什么string-object的哈希值不固定"><a href="#为什么string-object的哈希值不固定" class="headerlink" title="为什么string object的哈希值不固定"></a>为什么string object的哈希值不固定</h4><p>Python的随机哈希，简单地说就是对普通哈希进行了加盐。原因主要是为了防止Dos攻击。试想如果hash算法是公开的，那么我们可以精心设计一些值，使得他们拥有相同的哈希值。这样的话，在执行Python程序时，set的操作效率就会变成O(n^2)。这对于web application来说无疑是致命的。</p>
-<h4 id="关闭随机哈希"><a href="#关闭随机哈希" class="headerlink" title="关闭随机哈希"></a>关闭随机哈希</h4><p>Python在每次启动解释器时，都会设置一个random seed。所以在同一个解释器进程里，相同字符串的哈希值总是固定的。但每当另起一个解释器时，seed就会被重置，字符串的哈希值也会随之改变。</p>
-<p>想要关闭随机哈希，只要把<code>PYTHONHASHSEED</code>这个环境变量设置成<code>0</code>就可以了（默认是<code>random</code>）。其实在Python2.x版本里，这个环境变量的默认值就是<code>0</code>。</p>
+<p>I will ignore the <code>ray.init()</code> for now as there are likely many details there. The interesting thing here is the <code>@ray.remote</code> decorator, it turns the <code>square</code> function into a remote function. Later when we call <code>square.remote(i)</code>, it gives us a future, which can be resolved via <code>ray.get()</code>.</p>
+<p>Check the source code of <code>ray.remote</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">return ray.remote_function.RemoteFunction(</span><br><span class="line">                function_or_class, num_cpus, num_gpus, memory,</span><br><span class="line">                object_store_memory, resources, num_return_vals, max_calls,</span><br><span class="line">                max_retries)</span><br></pre></td></tr></table></figure>
+
+
+
 
       
     </div>
@@ -394,7 +395,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag"># Python</a>
+            <a href="/tags/Ray/" rel="tag"># Ray</a>
           
         </div>
       
@@ -407,8 +408,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/31/Python%20GIL/" rel="next" title="Python GIL">
-                <i class="fa fa-chevron-left"></i> Python GIL
+              <a href="/2021/01/11/%E7%AE%80%E7%9F%AD%E7%9A%84TorchScript%E6%95%99%E7%A8%8B/" rel="next" title="简短的TorchScript教程">
+                <i class="fa fa-chevron-left"></i> 简短的TorchScript教程
               </a>
             
           </div>
@@ -416,10 +417,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/01/14/%E5%81%9A%E4%B8%80%E4%B8%AA%E4%B9%90%E8%A7%82%E7%9A%84engineer/" rel="prev" title="做一个乐观的engineer">
-                做一个乐观的engineer <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -560,7 +557,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#起因"><span class="nav-number">1.</span> <span class="nav-text">起因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Root-Cause"><span class="nav-number">2.</span> <span class="nav-text">Root Cause</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么set返回顺序不固定"><span class="nav-number">3.</span> <span class="nav-text">为什么set返回顺序不固定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么string-object的哈希值不固定"><span class="nav-number">4.</span> <span class="nav-text">为什么string object的哈希值不固定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关闭随机哈希"><span class="nav-number">5.</span> <span class="nav-text">关闭随机哈希</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hello-World"><span class="nav-number">1.</span> <span class="nav-text">Hello World</span></a></li></ol></div>
             
 
           </div>
@@ -703,9 +700,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://shengpei.blog/2019/09/13/Python3%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%9A%8F%E6%9C%BA%E5%93%88%E5%B8%8C/';
-          this.page.identifier = '2019/09/13/Python3字符串随机哈希/';
-          this.page.title = 'Python3字符串随机哈希';
+          this.page.url = 'http://shengpei.blog/2022/09/16/Learning-Ray-1/';
+          this.page.identifier = '2022/09/16/Learning-Ray-1/';
+          this.page.title = 'Learning Ray(1)';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://zsp-blog.disqus.com/embed.js';
